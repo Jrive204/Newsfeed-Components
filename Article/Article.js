@@ -113,39 +113,54 @@ const data = [
 
 */
 
-function (data){
+function createData(title,date,firstParagraph,secondParagraph,thirdParagraph){
   const divarticle = document.createElement(`div`)
     divarticle.classList.add(`article`)
 
   const head2 = document.createElement(`h2`)
-    head2.textContent = data.title
+    head2.textContent = title
 
   const pardate = document.createElement(`p`)
     pardate.classList.add(`date`)
+    pardate.textContent = date
 
   const parone = document.createElement(`p`)
-    parone.textContent = data.firstParagraph
+    parone.textContent = firstParagraph
 
   const partwo = document.createElement(`p`)
-    partwo.textContent = data.secondParagraph
+    partwo.textContent = secondParagraph
 
   const parthree = document.createElement(`p`)
-    parthree.textContent = data.thirdParagraph
+    parthree.textContent = thirdParagraph
 
 
   const spanele = document.createElement(`span`)
     spanele.classList.add(`expandButton`)
+    spanele.textContent = `toggle`
+    
 
   divarticle.append(head2,pardate,parone,partwo,parthree,spanele)
 
-  spanele.addEventListener(`click`,e => {
+  spanele.addEventListener(`click`, () => {
+    
+    divarticle.classList.toggle('article-open');
 
-    buttonOpen.classList.toggle('hide-btn');
-    buttonClose.classList.toggle('hide-btn')
- 
+    // if (spanele.textContent != `open`){
+    //   spanele.textContent = `open`
+    // }else{
+    //   spanele.textContent = `close`
+    // }
+
+
 
   })
 
-
+return divarticle
 
 }
+
+const art = document.querySelector('.articles');
+data.forEach(d => {
+  art.appendChild(createData(d.title,d.date,d.firstParagraph,d.secondParagraph,d.thirdParagraph))
+})
+
