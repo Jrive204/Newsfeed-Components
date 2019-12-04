@@ -85,6 +85,22 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Money',
+    date: 'Jan 20st, 2019',
+    firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+          hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+          Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+    secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
 ];
 
@@ -112,3 +128,61 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function createData(title,date,firstParagraph,secondParagraph,thirdParagraph){
+  const divarticle = document.createElement(`div`)
+    divarticle.classList.add(`article`)
+
+  const head2 = document.createElement(`h2`)
+    head2.textContent = title
+
+  const pardate = document.createElement(`p`)
+    pardate.classList.add(`date`)
+    pardate.textContent = date
+
+  const parone = document.createElement(`p`)
+    parone.textContent = firstParagraph
+
+  const partwo = document.createElement(`p`)
+    partwo.textContent = secondParagraph
+
+  const parthree = document.createElement(`p`)
+    parthree.textContent = thirdParagraph
+
+
+  const spanele = document.createElement(`span`)
+    spanele.classList.add(`expandButton`)
+    spanele.textContent = `Expand`
+    
+
+  divarticle.append(head2,pardate,parone,partwo,parthree,spanele)
+
+  spanele.addEventListener(`click`, () => {
+    
+    divarticle.classList.toggle('article-open');
+
+    if (spanele.textContent !== `Expand`){
+      spanele.textContent = `Expand`
+    } else {
+      spanele.textContent = `Close`
+    }
+
+    if (spanele.textContent === `Close`){
+      spanele.addEventListener(`click`, () =>{
+        divarticle.style.display = `none`
+      })
+    }
+
+
+
+  })
+
+return divarticle
+
+}
+
+  data.forEach(d => {
+    const art = document.querySelector('.articles');
+  art.appendChild(createData(d.title,d.date,d.firstParagraph,d.secondParagraph,d.thirdParagraph))
+})
+
