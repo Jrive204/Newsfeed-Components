@@ -167,9 +167,11 @@ function createData(title,date,firstParagraph,secondParagraph,thirdParagraph){
       spanele.textContent = `Close`
     }
 
-    // if (spanele.textContent == `close`){
-
-    // }
+    if (spanele.textContent === `Close`){
+      spanele.addEventListener(`click`, () =>{
+        divarticle.style.display = `none`
+      })
+    }
 
 
 
