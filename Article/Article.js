@@ -112,3 +112,40 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function (data){
+  const divarticle = document.createElement(`div`)
+    divarticle.classList.add(`article`)
+
+  const head2 = document.createElement(`h2`)
+    head2.textContent = data.title
+
+  const pardate = document.createElement(`p`)
+    pardate.classList.add(`date`)
+
+  const parone = document.createElement(`p`)
+    parone.textContent = data.firstParagraph
+
+  const partwo = document.createElement(`p`)
+    partwo.textContent = data.secondParagraph
+
+  const parthree = document.createElement(`p`)
+    parthree.textContent = data.thirdParagraph
+
+
+  const spanele = document.createElement(`span`)
+    spanele.classList.add(`expandButton`)
+
+  divarticle.append(head2,pardate,parone,partwo,parthree,spanele)
+
+  spanele.addEventListener(`click`,e => {
+
+    buttonOpen.classList.toggle('hide-btn');
+    buttonClose.classList.toggle('hide-btn')
+ 
+
+  })
+
+
+
+}
